@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "452022693576",
+    "firebase_url": "https://move-mate.firebaseio.com",
+    "project_id": "move-mate",
+    "storage_bucket": "move-mate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452022693576:android:e98baee654b2fd1b62fffd",
+        "android_client_info": {
+          "package_name": "io.tombee.movemate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452022693576-i80npssqp048jipj7qj4ctar6178otjv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOmfnBQTx9FQzQZeInIDF1bvN4mimMGis"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452022693576-i80npssqp048jipj7qj4ctar6178otjv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
