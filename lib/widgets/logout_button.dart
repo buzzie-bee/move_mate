@@ -12,6 +12,7 @@ class LogoutButton extends StatelessWidget {
       onPressed: () async {
         await GoogleSignIn().disconnect();
         await _auth.signOut();
+        Navigator.popUntil(context, ModalRoute.withName('/'));
         print('signed out');
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),

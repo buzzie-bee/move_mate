@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:move_mate/widgets/navigation_drawer.dart';
 import 'package:move_mate/widgets/logout_button.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,8 +11,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
+      appBar: AppBar(
+        title: Text('MoveMate'),
+      ),
+      drawer: NavigationDrawer(
+        isHome: true,
+      ),
+      body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

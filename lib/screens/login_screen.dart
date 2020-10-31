@@ -28,42 +28,44 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Flexible(
-              child: Hero(
-                tag: 'logo',
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('assets/movemate_logo.png'),
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('assets/movemate_logo.png'),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 24.0,
-            ),
-            LoginButton(
-              onPressed: () async {
-                try {
-                  //TODO add loading spinner here
-                  UserCredential user = await signInWithGoogle();
-                  if (user != null) {
-                    print(user);
-                    Navigator.pushNamed(context, HomeScreen.id);
+              SizedBox(
+                height: 24.0,
+              ),
+              LoginButton(
+                onPressed: () async {
+                  try {
+                    //TODO add loading spinner here
+                    UserCredential user = await signInWithGoogle();
+                    if (user != null) {
+                      print(user);
+                      Navigator.pushNamed(context, HomeScreen.id);
+                    }
+                  } catch (e) {
+                    //TODO handle this error
+                    print(e);
                   }
-                } catch (e) {
-                  //TODO handle this error
-                  print(e);
-                }
-              },
-            )
-          ],
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
