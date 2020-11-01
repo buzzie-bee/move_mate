@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:move_mate/screens/home_screen.dart';
 
 import 'package:move_mate/screens/profile.dart';
 import 'package:move_mate/screens/settings.dart';
@@ -6,6 +8,7 @@ import 'package:move_mate/screens/my_moves.dart';
 
 final Map<String, String> titles = <String, String>{
   'default': 'Move Mate',
+  HomeScreen.id: 'Move Mate',
   MyMoves.id: 'My Moves',
   Profile.id: 'Profile',
   Settings.id: 'Settings',
@@ -14,8 +17,10 @@ final Map<String, String> titles = <String, String>{
 class NavigationDrawer extends StatelessWidget {
   final String currentScreen;
   final bool isHome;
+  final Function onSelect;
 
-  NavigationDrawer({this.currentScreen = 'default', this.isHome = false});
+  NavigationDrawer(
+      {this.currentScreen = 'default', this.isHome = false, this.onSelect});
 
   @override
   Widget build(BuildContext context) {
@@ -36,19 +41,24 @@ class NavigationDrawer extends StatelessWidget {
             ),
           ),
           DrawerListTile(
-            isHome: isHome,
-            route: MyMoves.id,
-            icon: Icon(Icons.house),
+            route: HomeScreen.id,
+            icon: Icon(Icons.home),
+            onSelect: onSelect,
           ),
           DrawerListTile(
-            isHome: isHome,
+            route: MyMoves.id,
+            icon: Icon(FontAwesomeIcons.box),
+            onSelect: onSelect,
+          ),
+          DrawerListTile(
             route: Profile.id,
             icon: Icon(Icons.person_outline),
+            onSelect: onSelect,
           ),
           DrawerListTile(
-            isHome: isHome,
             route: Settings.id,
             icon: Icon(Icons.settings),
+            onSelect: onSelect,
           ),
         ],
       ),
@@ -57,12 +67,12 @@ class NavigationDrawer extends StatelessWidget {
 }
 
 class DrawerListTile extends StatelessWidget {
-  final bool isHome;
   final String route;
   final Icon icon;
+  final Function onSelect;
 
   DrawerListTile(
-      {this.isHome = false, @required this.icon, @required this.route});
+      {@required this.icon, @required this.route, @required this.onSelect});
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +81,7 @@ class DrawerListTile extends StatelessWidget {
       title: Text(titles[route]),
       onTap: () {
         Navigator.pop(context);
-        if (isHome) {
-          Navigator.pushNamed(context, route);
-        } else {
-          Navigator.pushReplacementNamed(context, route);
-        }
+        onSelect(route);
       },
     );
   }

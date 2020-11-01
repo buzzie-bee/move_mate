@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import 'package:move_mate/screens/home_screen.dart';
 import 'package:move_mate/widgets/login_button.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -56,7 +55,7 @@ class LoginScreen extends StatelessWidget {
                     UserCredential user = await signInWithGoogle();
                     if (user != null) {
                       print(user);
-                      Navigator.pushNamed(context, HomeScreen.id);
+                      // Navigator.pushNamed(context, HomeScreen.id);
                     }
                   } catch (e) {
                     //TODO handle this error
