@@ -8,7 +8,7 @@ import 'package:move_mate/screens/my_moves.dart';
 
 final Map<String, String> titles = <String, String>{
   'default': 'Move Mate',
-  HomeScreen.id: 'Move Mate',
+  HomeScreen.id: 'Home',
   MyMoves.id: 'My Moves',
   Profile.id: 'Profile',
   Settings.id: 'Settings',

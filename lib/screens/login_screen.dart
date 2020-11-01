@@ -4,6 +4,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:move_mate/widgets/login_button.dart';
 
+import 'package:move_mate/services/sign_in_and_up.dart';
+
 class LoginScreen extends StatelessWidget {
   static const String id = 'login-screen';
 
@@ -52,10 +54,12 @@ class LoginScreen extends StatelessWidget {
                 onPressed: () async {
                   try {
                     //TODO add loading spinner here
-                    UserCredential user = await signInWithGoogle();
+                    UserCredential user = await SignIn().signInWithGoogle();
                     if (user != null) {
-                      print(user);
-                      // Navigator.pushNamed(context, HomeScreen.id);
+                      print(user.user.uid);
+
+                      bool exists = await SignIn().checkIfUserExists(user.user);
+                      print(exists);
                     }
                   } catch (e) {
                     //TODO handle this error
